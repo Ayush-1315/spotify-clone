@@ -1,4 +1,4 @@
-.album{
+.album {
     /* background-color: red; */
     width: 65vw;
     display: flex;
@@ -7,16 +7,57 @@
     justify-content: center;
     gap: 2rem;
 }
-.album img{
+
+.album img {
     height: 60vh;
     width: 60vh;
-    border-radius:8px ;
+    border-radius: 8px;
     object-fit: cover;
 }
-.album button{
+
+.album button {
     width: fit-content;
+    background-color: transparent;
+    height: fit-content;
+    border:none;
+    cursor: pointer;
+
 }
-.header{
+.album button img{
+    height: 3rem;
+    width: 3rem;
+    background-color: black;
+}
+
+.header {
     text-align: left;
     width: 100%;
+}
+
+.seeker {
+    display: block;
+    margin: 1rem 0;
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    border-radius: 8px;
+    cursor: pointer;
+
+}
+
+.seeker::-webkit-slider-runnable-track {
+    height: 0.5rem;
+    border-radius: 8px;
+  }
+.seeker::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    appearance: none;
+    margin-top: -12px; 
+    background-color: #ffffff;
+    height: 8px;
+    position: relative;
+    top:150%;
+    width: 0.7rem;
+    border-radius: 50%;
 }

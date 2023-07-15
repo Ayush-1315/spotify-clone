@@ -24,7 +24,7 @@ export const Sidebar = () => {
     <div className={sidebarCSS.container}>
       <div className={sidebarCSS.brand}>
         <img src={logo} alt="logo" />
-        {!loading && (
+        {!loading ? (
           <ul>
             {data?.getPlaylists.map((playlist) => (
               <li
@@ -44,7 +44,7 @@ export const Sidebar = () => {
               </li>
             ))}
           </ul>
-        )}
+        ):"Loading Playlist"}
       </div>
       <div>
         <img src={profile} alt="profile" className={sidebarCSS.profile} />

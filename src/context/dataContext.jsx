@@ -37,7 +37,7 @@ export const DataProvider = ({ children }) => {
 
   console.log(dataState);
   return (
-    <DataContext.Provider value={{ dataState, dispatch }}>
+    <DataContext.Provider value={{ dataState, dispatch,loadingPlaylist }}>
       {children}
     </DataContext.Provider>
   );

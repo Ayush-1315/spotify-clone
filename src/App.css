@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Basier Circle';
+  src: url('../public/fonts/basiercircle-regular.otf') format('truetype');
+  /* Add more src declarations for other font file formats if needed */
+  font-weight: normal;
+  font-style: normal;
+}
+
 .App {
   text-align: center;
   background-color: black;
@@ -9,6 +17,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   /* filter: blur(10px);s */
+  font-family: 'Basier Circle', sans-serif;
   
 }
 .content{
