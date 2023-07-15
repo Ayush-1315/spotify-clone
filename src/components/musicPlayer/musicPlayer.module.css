@@ -1,0 +1,22 @@
+.album{
+    /* background-color: red; */
+    width: 65vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+.album img{
+    height: 60vh;
+    width: 60vh;
+    border-radius:8px ;
+    object-fit: cover;
+}
+.album button{
+    width: fit-content;
+}
+.header{
+    text-align: left;
+    width: 100%;
+}

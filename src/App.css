@@ -2,8 +2,14 @@
   text-align: center;
   background-color: black;
   color:white;
-  overflow: hidden;
+  /* overflow: hidden; */
+  overflow-x: hidden;
   display: flex;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* filter: blur(10px);s */
+  
 }
 .content{
   outline: 2px solid red;
