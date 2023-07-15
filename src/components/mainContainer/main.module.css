@@ -1,0 +1,8 @@
+.container{
+    text-align: left;
+    /* background-color: yellow; */
+}
+.container h2{
+    padding: 1rem 1.5rem;
+    margin: 0;
+}

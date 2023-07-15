@@ -1,0 +1,17 @@
+.searchbar{
+    border-radius: 8px;
+    background-color: yellow;
+background: rgba(255, 255, 255, 0.08);
+margin: 0 1rem;
+display: flex;
+width: 85%;
+padding: 0.4rem 0.8rem;
+justify-content: space-between;
+align-items: center;
+}
+.searchbar input{
+    outline: none;
+    border:none;
+    color:white;
+    background-color: transparent;
+}

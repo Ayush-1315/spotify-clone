@@ -1,0 +1,28 @@
+.container{
+    height: 100vh;
+    color:white;
+    width: 15vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;;
+    text-align: left;
+}
+.brand{
+    outline: 2px solid green;
+    padding: 1rem 0.5rem;
+    text-align: left;
+}
+.container ul{
+    padding: 0;
+}
+.container .links{
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem;
+    color: #FFFFFF;
+    opacity: 0.4000000059604645;
+    cursor: pointer;
+}
+.profile{
+    cursor: pointer;
+}
