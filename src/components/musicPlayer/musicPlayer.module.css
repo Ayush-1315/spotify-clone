@@ -1,5 +1,4 @@
 .album {
-    /* background-color: red; */
     width: 65vw;
     display: flex;
     flex-direction: column;
@@ -15,15 +14,20 @@
     object-fit: cover;
 }
 
-.album button {
+.controls>div {
+    position: relative;
+}
+
+.playerControls button {
     width: fit-content;
     background-color: transparent;
     height: fit-content;
-    border:none;
+    border: none;
     cursor: pointer;
 
 }
-.album button img{
+
+.playerControls button img {
     height: 3rem;
     width: 3rem;
     background-color: black;
@@ -34,7 +38,16 @@
     width: 100%;
 }
 
-.seeker {
+.header h1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 30vw;
+    white-space: nowrap;
+    font-size: 2rem;
+}
+
+.seeker,
+.volC {
     display: block;
     margin: 1rem 0;
     width: 100%;
@@ -49,15 +62,141 @@
 .seeker::-webkit-slider-runnable-track {
     height: 0.5rem;
     border-radius: 8px;
-  }
-.seeker::-webkit-slider-thumb{
+}
+
+.volC::-webkit-slider-runnable-track {
+    height: 1rem;
+    border-radius: 50%;
+}
+
+/* Firefox */
+input[type="range"]::-moz-range-track {
+    height: 0.5rem;
+    border-radius: 8px;
+}
+
+.seeker::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    margin-top: -12px; 
+    margin-top: -12px;
     background-color: #ffffff;
     height: 8px;
     position: relative;
-    top:150%;
+    top: 150%;
     width: 0.7rem;
     border-radius: 50%;
+}
+
+.volC::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #ffffff;
+    position: relative;
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+}
+
+.volC::-webkit-slider-thumb:hover {
+    filter: drop-shadow(0 0 3px #ffffff);
+}
+
+.volC {
+    -webkit-appearance: slider-vertical;
+    appearance: none;
+    background-color: #ffffff;
+    width: 10rem;
+    height: 0.5rem;
+}
+
+.seeker::-moz-range-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    margin-top: -12px;
+    background-color: #ffffff;
+    height: 8px;
+    position: relative;
+    top: 150%;
+    width: 0.7rem;
+    border-radius: 50%;
+    border: none;
+}
+
+.volC::-moz-range-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #ffffff;
+    position: relative;
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+}
+
+.extras img {
+    height: 1.5rem;
+    width: 1.6rem;
+}
+
+.extras {
+    background-color: red;
+    padding: 0.5rem;
+    border-radius: 50%;
+    border: none;
+    height: fit-content;
+    width: fit-content;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.10);
+    position: relative;
+}
+
+.options {
+    color: white;
+    font-size: 1rem;
+    position: absolute;
+    left: -80%;
+    top: -100%;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 1);
+    width: 7rem;
+    min-height: 2.5rem;
+}
+
+.options ul {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+    cursor: pointer;
+}
+
+.options li {
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    justify-content: center;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.options li:hover {
+    background-color: rgba(104, 104, 104, 0.6);
+}
+
+.options li span:nth-child(2) {
+    height: 1.5rem;
+}
+
+.volume {
+    top: -200%;
+    left: -170%;
+    border-radius: 10px;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.60);
+    padding: 0 0.5rem;
+    transform: rotate(-90deg);
 }

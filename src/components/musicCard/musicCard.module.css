@@ -15,6 +15,13 @@
 .nowPlaying {
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.08);
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+    padding: 0.5rem;
+    align-items: center;
+    cursor: pointer;
+
 }
 
 .image {
