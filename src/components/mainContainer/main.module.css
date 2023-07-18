@@ -1,8 +1,11 @@
 .container{
     text-align: left;
     max-height: 100vh;
-    /* background-color: yellow; */
     overflow-y: scroll;
+}
+.content{
+    position: relative;
+    min-height: 90vh;
 }
 .container h2{
     padding: 1rem 1.5rem;

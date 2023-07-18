@@ -1,4 +1,5 @@
 import { useData } from "../../context/dataContext";
+import { Loader } from "../loader/loader";
 import { MusicCard } from "../musicCard/musicCard";
 import { SearchBar } from "../searchBar/searchBar";
 import mainCSS from "./main.module.css";
@@ -16,8 +17,9 @@ export const Main = () => {
         <h2>{dataState?.playlist}</h2>
         <SearchBar  value={dataState?.search} />
       </div>
+      <div className={mainCSS.content}>
       {loadingPlaylist ? (
-        "Loading"
+        <Loader height="100%" width="100%" zIndex="3"/>
       ) : (
        dataState?.search!=="" && dataState.displayData.length===0?<span> Nothing here matches your search</span>: <div className={mainCSS.list}>
        {dataState?.displayData.map((music) => (
@@ -25,6 +27,7 @@ export const Main = () => {
        ))}
      </div>
       )}
+      </div>
     </div>
   );
 };

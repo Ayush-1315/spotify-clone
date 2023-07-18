@@ -15,7 +15,7 @@ export const MusicPlayer = () => {
   const [audio, setAudio] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
-  const [volume, setVolume] = useState(0.8);
+  const [volume, setVolume] = useState(1);
   const [duration, setDuration] = useState(0);
   const [pageReload, setPageReload] = useState(true);
   const [showOptions, setShwOptions] = useState(false);
@@ -123,11 +123,7 @@ export const MusicPlayer = () => {
   const clickHandler = (e) => {
     e.stopPropagation();
   };
-  useEffect(() => {
-    document.addEventListener("click", () => {
-      setShwOptions(false);
-    });
-  }, []);
+
 
   const volumeControl = (e) => {
     setVolume(e.target.value);
@@ -163,7 +159,7 @@ export const MusicPlayer = () => {
                     <img src={more} alt="more-options" />
                   </button>
                   {showOptions && (
-                    <div className={playerCSS.options}>
+                    <div className={playerCSS.options} onMouseLeave={()=>setShwOptions(false)}>
                       <ul>
                         <li onClick={() => handleAutoplay()}>
                           <span>Autoplay</span>

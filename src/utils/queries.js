@@ -25,3 +25,12 @@ export const SEARCH = gql`
     }
   }
 `;
+
+export const PLAYLISTS = gql`
+query Query {
+  getPlaylists {
+    id
+    title
+  }
+}
+`;
