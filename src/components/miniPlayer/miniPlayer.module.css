@@ -1,0 +1,37 @@
+.container{
+    height: 5rem;
+    width: 100vw;
+    position: fixed;
+    bottom: 0;
+    left:0;
+    background-color: red;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    justify-content: space-between;
+}
+.container img{
+    height: 4rem;
+    width: 4rem;
+    margin: 0.3rem;
+    border-radius: 5px;
+}
+.head{
+    width: 50vw;
+}
+.head p{
+    margin: 0.3rem 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+}
+.buttons{
+    background-color: transparent;
+    border: none;
+    height: 2rem;
+}
+.buttons img{
+    height: 100%;
+    width: 100%;
+}

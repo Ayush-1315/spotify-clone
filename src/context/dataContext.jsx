@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer, useState } from "react";
 import { useQuery } from "@apollo/client";
 
 import { PLAYLIST, PLAYLISTS } from "../utils/queries";
@@ -9,6 +9,7 @@ export const DataProvider = ({ children }) => {
   const state=JSON.parse(localStorage.getItem("lastPlayed"))??initialState;
   const [dataState, dispatch] = useReducer(dataReducerFun,state);
   const playlistId = dataState.currentTab;
+  const [showMiniPlayer,setShowMiniPlayer]=useState(false);
   const {
     loading: loadingPlaylist,
     error,
@@ -25,7 +26,7 @@ export const DataProvider = ({ children }) => {
   if (error) return `ERROR! ${error.message}`;
 
   return (
-    <DataContext.Provider value={{ dataState, dispatch, loadingPlaylist,playlistLoader,playlists}}>
+    <DataContext.Provider value={{ dataState, dispatch, loadingPlaylist,playlistLoader,playlists,showMiniPlayer,setShowMiniPlayer}}>
       {children}
     </DataContext.Provider>
   );

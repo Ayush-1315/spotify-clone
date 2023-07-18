@@ -8,9 +8,10 @@ import next from "../../assets/next.svg";
 import prev from "../../assets/prev.svg";
 import vol from "../../assets/vol.svg";
 import more from "../../assets/more.svg";
+import { MiniPlayer } from "../miniPlayer/miniPlayer";
 
 export const MusicPlayer = () => {
-  const { dataState, dispatch } = useData();
+  const { dataState, dispatch, showMiniPlayer,setShowMiniPlayer} = useData();
   const { currentlyPlaying } = dataState;
   const [audio, setAudio] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -19,7 +20,7 @@ export const MusicPlayer = () => {
   const [duration, setDuration] = useState(0);
   const [pageReload, setPageReload] = useState(true);
   const [showOptions, setShwOptions] = useState(false);
-  const [showVolume,setShowVolume]=useState(false);
+  const [showVolume, setShowVolume] = useState(false);
   useEffect(() => {
     if (Object.keys) {
       localStorage.removeItem("lastPlayed");
@@ -124,109 +125,138 @@ export const MusicPlayer = () => {
     e.stopPropagation();
   };
 
-
   const volumeControl = (e) => {
     setVolume(e.target.value);
     audio.volume = e.target.value;
   };
   return (
-    <div className={playerCSS.album}>
-      {currentlyPlaying?.url !== undefined ? (
-        <>
-          <div>
-            <div className={playerCSS.header}>
-              <h1 className={playerCSS.title}>{currentlyPlaying?.title}</h1>
-              <p className={playerCSS.artist}>{currentlyPlaying?.artist}</p>
-            </div>
-            <img src={currentlyPlaying?.photo} alt={currentlyPlaying?.title} />
-            <div>
-              <input
-                type="range"
-                min={0}
-                max={duration}
-                step={0.1}
-                value={currentTime}
-                onChange={handleSeek}
-                className={playerCSS.seeker}
-                style={getProgressStyle()}
-              />
-              <div className={playerCSS.controls}>
-                <div onClick={clickHandler}>
-                  <button
-                    className={playerCSS.extras}
-                    onClick={() => setShwOptions((prev) => !prev)}
-                  >
-                    <img src={more} alt="more-options" />
-                  </button>
-                  {showOptions && (
-                    <div className={playerCSS.options} onMouseLeave={()=>setShwOptions(false)}>
-                      <ul>
-                        <li onClick={() => handleAutoplay()}>
-                          <span>Autoplay</span>
-                          <span>
-                            {dataState?.autoplay && (
-                              <span className="material-symbols-outlined">
-                                check_circle
+    <>
+      {showMiniPlayer ? (
+        <MiniPlayer
+          playNext={playNext}
+          play={handlePlay}
+          pause={handlePause}
+          isPlaying={isPlaying}
+        />
+      ) : (
+        <div className={playerCSS.album}>
+          {currentlyPlaying?.url !== undefined ? (
+            <>
+              <div>
+                <div className={playerCSS.header}>
+                  <h1 className={playerCSS.title}>{currentlyPlaying?.title}</h1>
+                  <p className={playerCSS.artist}>{currentlyPlaying?.artist}</p>
+                  <span className={playerCSS.dropper} onClick={()=>setShowMiniPlayer(true)}>
+                  <span className="material-symbols-outlined">
+                    arrow_drop_down_circle
+                  </span>
+                  </span>
+                </div>
+                <img
+                  src={currentlyPlaying?.photo}
+                  alt={currentlyPlaying?.title}
+                />
+                <div>
+                  <input
+                    type="range"
+                    min={0}
+                    max={duration}
+                    step={0.1}
+                    value={currentTime}
+                    onChange={handleSeek}
+                    className={playerCSS.seeker}
+                    style={getProgressStyle()}
+                  />
+                  <div className={playerCSS.controls}>
+                    <div onClick={clickHandler}>
+                      <button
+                        className={playerCSS.extras}
+                        onClick={() => setShwOptions((prev) => !prev)}
+                      >
+                        <img src={more} alt="more-options" />
+                      </button>
+                      {showOptions && (
+                        <div
+                          className={playerCSS.options}
+                          onMouseLeave={() => setShwOptions(false)}
+                        >
+                          <ul>
+                            <li onClick={() => handleAutoplay()}>
+                              <span>Autoplay</span>
+                              <span>
+                                {dataState?.autoplay && (
+                                  <span className="material-symbols-outlined">
+                                    check_circle
+                                  </span>
+                                )}
                               </span>
-                            )}
-                          </span>
-                        </li>
-                      </ul>
+                            </li>
+                          </ul>
+                        </div>
+                      )}
                     </div>
-                  )}
-                </div>
-                <div className={playerCSS.playerControls}>
-                  <button onClick={prevPlay}>
-                    <img src={prev} alt="prev-Play" />
-                  </button>
-                  {!isPlaying ? (
-                    <button onClick={handlePlay} disabled={!audio || isPlaying}>
-                      <img src={play} alt="play" />
-                    </button>
-                  ) : (
-                    <button
-                      onClick={handlePause}
-                      disabled={!audio || !isPlaying}
+                    <div className={playerCSS.playerControls}>
+                      <button onClick={prevPlay}>
+                        <img src={prev} alt="prev-Play" />
+                      </button>
+                      {!isPlaying ? (
+                        <button
+                          onClick={handlePlay}
+                          disabled={!audio || isPlaying}
+                        >
+                          <img src={play} alt="play" />
+                        </button>
+                      ) : (
+                        <button
+                          onClick={handlePause}
+                          disabled={!audio || !isPlaying}
+                        >
+                          <img
+                            src={pause}
+                            alt="pause"
+                            style={{
+                              backgroundColor: "#FFFFFF",
+                              borderRadius: "50%",
+                            }}
+                          />
+                        </button>
+                      )}
+                      <button onClick={playNext}>
+                        <img src={next} alt="next-Play" />
+                      </button>
+                    </div>
+                    <div
+                      onMouseEnter={() => setShowVolume(true)}
+                      onMouseLeave={() => setShowVolume(false)}
                     >
-                      <img
-                        src={pause}
-                        alt="pause"
-                        style={{
-                          backgroundColor: "#FFFFFF",
-                          borderRadius: "50%",
-                        }}
-                      />
-                    </button>
-                  )}
-                  <button onClick={playNext}>
-                    <img src={next} alt="next-Play" />
-                  </button>
-                </div>
-                <div onMouseEnter={()=>setShowVolume(true)} onMouseLeave={()=>setShowVolume(false)}>
-                  {showVolume &&<div className={playerCSS.volume}>
-                    <input
-                      type="range"
-                      orient="vertical"
-                      style={getVolumeStyle()}
-                      min={0}
-                      max={1}
-                      step={0.1}
-                      value={volume}
-                      onChange={volumeControl}
-                      className={playerCSS.volC}
-                    />
-                  </div>}
-                  <button className={playerCSS.extras}>
-                    <img src={vol} alt="vol" />
-                  </button>
+                      {showVolume && (
+                        <div className={playerCSS.volume}>
+                          <input
+                            type="range"
+                            orient="vertical"
+                            style={getVolumeStyle()}
+                            min={0}
+                            max={1}
+                            step={0.1}
+                            value={volume}
+                            onChange={volumeControl}
+                            className={playerCSS.volC}
+                          />
+                        </div>
+                      )}
+                      <button className={playerCSS.extras}>
+                        <img src={vol} alt="vol" />
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </>
-      ) : (
-        <h1>Select a song to play</h1>
+            </>
+          ) : (
+            <h1>Select a song to play</h1>
+          )}
+        </div>
       )}
-    </div>
+    </>
   );
 };
