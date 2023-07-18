@@ -15,7 +15,7 @@ export const SearchBar = () => {
   };
   const [search, {  data }] = useLazyQuery(SEARCH);
   useEffect(() => {
-    if (dataState?.search.length > 1) {
+    if (dataState?.search.length > 0) {
       search({ variables: { search: dataState?.search, playlistId } });
     }
     else{

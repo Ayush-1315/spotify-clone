@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 import { useQuery } from "@apollo/client";
 
-import { PLAYLIST } from "../utils/queries";
+import { PLAYLIST, PLAYLISTS } from "../utils/queries";
 import { initialState, dataReducerFun } from "../reducer/dataReducer";
 const DataContext = createContext();
 
@@ -16,6 +16,7 @@ export const DataProvider = ({ children }) => {
   } = useQuery(PLAYLIST, {
     variables: { playlistId },
   });
+  const { loading:playlistLoader, data:playlists } = useQuery(PLAYLISTS);
   useEffect(() => {
     if (!loadingPlaylist) {
       dispatch({ type: "SET_PLAYLIST", payload: data?.getSongs });
@@ -24,7 +25,7 @@ export const DataProvider = ({ children }) => {
   if (error) return `ERROR! ${error.message}`;
 
   return (
-    <DataContext.Provider value={{ dataState, dispatch, loadingPlaylist }}>
+    <DataContext.Provider value={{ dataState, dispatch, loadingPlaylist,playlistLoader,playlists}}>
       {children}
     </DataContext.Provider>
   );

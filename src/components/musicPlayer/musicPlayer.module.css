@@ -5,6 +5,14 @@
     align-items: center;
     justify-content: center;
     gap: 2rem;
+    position: fixed;
+    background-color: black;
+    top:0;
+    left:0;
+    z-index: 7;
+    width: 100vw;
+    height: 100vh;
+    display: none;
 }
 
 .album img {
@@ -199,4 +207,7 @@ input[type="range"]::-moz-range-track {
     background-color: rgba(0, 0, 0, 0.60);
     padding: 0 0.5rem;
     transform: rotate(-90deg);
+}
+@media screen and (min-width:768px) {
+    
 }

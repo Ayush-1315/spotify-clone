@@ -1,19 +1,11 @@
-import { useQuery } from "@apollo/client";
-
 import { useData } from "../../context/dataContext";
 import sidebarCSS from "./sidebar.module.css";
 import logo from "../../assets/Logo.svg";
 import profile from "../../assets/Profile.png";
-import { PLAYLISTS } from "../../utils/queries";
 import { Loader } from "../loader/loader";
 
 export const Sidebar = () => {
-  const { loading, error, data } = useQuery(PLAYLISTS);
-  const { dataState, dispatch } = useData();
-
-  if (error) {
-    console.log(error);
-  }
+  const { dataState, dispatch,playlistLoader:loading,playlists:data } = useData();
   return (
     <div className={sidebarCSS.container}>
       {!loading?
