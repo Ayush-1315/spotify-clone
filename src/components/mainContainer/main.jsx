@@ -16,6 +16,7 @@ export const Main = () => {
   useEffect(() => {
     if (showLoader && !loadingPlaylist) {
       setShowLoader(false);
+      window.scrollTo(0,0)
     }
   }, [loadingPlaylist, showLoader]);
   return (

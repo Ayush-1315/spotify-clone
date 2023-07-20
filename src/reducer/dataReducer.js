@@ -36,7 +36,6 @@ export const dataReducerFun = (state, action) => {
         return {
           ...state,
           displayData: payload,
-          
         };
       case "PLAY_NEXT":
         const currentIndex=state?.currentPlaylist?.findIndex(({_id})=>_id===payload);
