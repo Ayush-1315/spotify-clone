@@ -47,7 +47,6 @@ export const DataProvider = ({ children }) => {
   if (error) {
     return `ERROR! ${error.message}`;
   }
-console.log(dataState)
   return (
     <DataContext.Provider
       value={{
