@@ -7,7 +7,8 @@ import logo from "../../assets/Logo.svg";
 import { useEffect, useState } from "react";
 
 export const Main = () => {
-  const { dataState, dispatch, loadingPlaylist, playlists,showMiniPlayer} = useData();
+  const { dataState, dispatch, loadingPlaylist, playlists, showMiniPlayer } =
+    useData();
   const [showLoader, setShowLoader] = useState(true);
   const clickHandler = (_id) => {
     dispatch({ type: "PLAY_SONG", payload: _id });
@@ -18,9 +19,17 @@ export const Main = () => {
     }
   }, [loadingPlaylist, showLoader]);
   return (
-    <div className={mainCSS.container} style={{height:dataState?.currentlyPlaying!==null && showMiniPlayer?"90vh":"100vh"}}>
+    <div
+      className={mainCSS.container}
+      style={{
+        height:
+          dataState?.currentlyPlaying !== null && showMiniPlayer
+            ? "88vh"
+            : "100vh",
+      }}
+    >
       {showLoader ? (
-        <Loader />
+        <Loader zIndex={window.innerWidth < 1024 ? "10" : "7"} />
       ) : (
         <>
           <div className={mainCSS.head}>
