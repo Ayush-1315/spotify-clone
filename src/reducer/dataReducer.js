@@ -3,7 +3,7 @@ export const initialState = {
   allData:[],
   displayData: [],
   currentPlaylist: [],
-  currentlyPlaying: {},
+  currentlyPlaying: null,
   search: "",
   playlist: playlist[0],
   currentTab: 1,

@@ -7,27 +7,30 @@
     gap: 2rem;
     position: fixed;
     background-color: black;
-    top:0;
-    left:0;
+    top: 0;
+    left: 0;
     z-index: 7;
     width: 100vw;
     height: 100vh;
     /* display: none; */
 }
-.dropper{
+
+.dropper {
     position: absolute;
-    top:0;
+    top: 0;
     right: 0;
     margin: 1rem;
 }
-.dropper span{
+
+.dropper span {
     font-size: 2.5rem;
 }
+
 .album img {
     height: 60vh;
-    width: 60vh;
+    width: 90vw;
     border-radius: 8px;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .controls>div {
@@ -44,8 +47,8 @@
 }
 
 .playerControls button img {
-    height: 3rem;
-    width: 3rem;
+    height: 2rem;
+    width: 2rem;
     background-color: black;
 }
 
@@ -57,9 +60,9 @@
 .header h1 {
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 30vw;
+    width: 75vw;
     white-space: nowrap;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 .seeker,
@@ -154,7 +157,7 @@ input[type="range"]::-moz-range-track {
 }
 
 .extras img {
-    height: 1.5rem;
+    height: 1.4rem;
     width: 1.6rem;
 }
 
@@ -208,7 +211,7 @@ input[type="range"]::-moz-range-track {
 }
 
 .volume {
-    top: -200%;
+    top: -250%;
     left: -170%;
     border-radius: 10px;
     position: absolute;
@@ -216,6 +219,54 @@ input[type="range"]::-moz-range-track {
     padding: 0 0.5rem;
     transform: rotate(-90deg);
 }
+
+@media screen and (min-width:481px) {
+    .album {
+        position: static;
+        width: 55vw;
+    }
+
+    .album img {
+        height: 60vh;
+        width: 40vw;
+        border-radius: 8px;
+        object-fit: contain;
+    }
+
+    .header h1 {
+        width: 45vw;
+    }
+
+    .extras img {
+        width: 1.4rem;
+        height: 1.5rem;
+    }
+    .dropper{
+        display: none;
+    }
+}
+
 @media screen and (min-width:768px) {
-    
+    .album {
+        position: static;
+        width: 50vw;
+        margin: auto;
+    }
+
+    .album img {
+        height: 60vh;
+        width: 25vw;
+        border-radius: 8px;
+        object-fit: contain;
+    }
+
+    .header h1 {
+        width: 25vw;
+    }
+
+    .extras img {
+        width: 1.5rem;
+        height: 1.6rem;
+    }
+
 }

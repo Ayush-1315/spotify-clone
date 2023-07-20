@@ -8,7 +8,6 @@ export const MiniPlayer = ({ isPlaying, play, pause, playNext }) => {
   const {
     dataState: { currentlyPlaying },setShowMiniPlayer
   } = useData();
-  console.log(currentlyPlaying);
   const handlePlay=(e)=>{
     e.stopPropagation();
     play();

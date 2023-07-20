@@ -228,6 +228,7 @@ export const MusicPlayer = () => {
                     <div
                       onMouseEnter={() => setShowVolume(true)}
                       onMouseLeave={() => setShowVolume(false)}
+                      onClick={()=>setShowVolume(true)}
                     >
                       {showVolume && (
                         <div className={playerCSS.volume}>
